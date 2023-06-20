@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Кошелёк</string>
+    <string name="nodes_activity_name">Список нод</string>
+</resources>

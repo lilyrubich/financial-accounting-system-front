@@ -1,0 +1,1 @@
+Front part Android Application for Financial Accounting System.
