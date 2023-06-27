@@ -27,19 +27,15 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> im
     private static List<Node> nodes;
     private List<Node> nodesFiltered;
     private Context context;
+    private NodeClickListener nodeClickListener;
 
-    NodeAdapter(Context context, List<Node> nodes) {
+
+    public NodeAdapter(Context context, List<Node> nodes, NodeClickListener nodeClickListener) {
+        this.context = context;
         this.nodes = nodes;
+        this.nodeClickListener = nodeClickListener;
         this.inflater = LayoutInflater.from(context);
     }
-
-/*
-    public NodeAdapter(Context context, List<Node> nodes){
-        this.context=context;
-        this.nodes=nodes;
-    }
-
-     */
 
 
     @Override
@@ -56,6 +52,13 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> im
         holder.nameView.setText(node.getName());
         holder.amountView.setText(node.getAmount());
         holder.currencyView.setText(node.getCurrency());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nodeClickListener.selectedNode(node);
+            }
+        });
     }
 
     @Override
@@ -96,10 +99,10 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> im
         return filter;
     }
 
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView iconView;
         final TextView nameView, amountView, currencyView;
-        //OnNodeClickListener onNodeClickListener;
 
         public ViewHolder(View view) {
             super(view);
@@ -107,29 +110,13 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> im
             nameView = view.findViewById(R.id.name);
             amountView = view.findViewById(R.id.amount);
             currencyView = view.findViewById(R.id.currency);
-            /*
-
-
-            this.onNodeClickListener = onNodeClickListener;
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Node node = nodes.get(getLayoutPosition());
-                    onNodeClickListener.onNodeClick(node);
-                }
-            });
-
-            */
         }
-
     }
 
-             /*
-//
-    public interface OnNodeClickListener {
-        void onNodeClick(Node node);
+    public interface NodeClickListener {
+        void selectedNode(Node node);
     }
-    //
-
-             */
 }
+
+
+

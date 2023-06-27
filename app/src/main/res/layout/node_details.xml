@@ -39,7 +39,7 @@
         android:textSize="40sp"
         android:textStyle="bold"/>
 
-    <androidx.constraintlayout.helper.widget.Flow
+    <!--androidx.constraintlayout.helper.widget.Flow
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" /-->
 </androidx.constraintlayout.widget.ConstraintLayout>

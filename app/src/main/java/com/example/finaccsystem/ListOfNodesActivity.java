@@ -7,16 +7,18 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class ListOfNodesActivity extends AppCompatActivity {
+public class ListOfNodesActivity extends AppCompatActivity implements NodeAdapter.NodeClickListener {
 
     RecyclerView rvNodes;
     NodeAdapter nodeAdapter;
@@ -32,7 +34,7 @@ public class ListOfNodesActivity extends AppCompatActivity {
         recyclerView.setAdapter(nodeAdapter);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         initData();
-    };
+    }
 
 
     private void showData() {
@@ -53,8 +55,8 @@ public class ListOfNodesActivity extends AppCompatActivity {
         //Toast.makeText(ListOfNodesActivity.this, "user ", Toast.LENGTH_SHORT).show();
 
         rvNodes.setLayoutManager(new LinearLayoutManager(this));
-        nodeAdapter = new NodeAdapter( getApplicationContext(),
-                nodes);
+        nodeAdapter = new NodeAdapter(this, nodes, this::selectedNode);
+        //nodeAdapter = new NodeAdapter( getApplicationContext(), nodes);
         rvNodes.setAdapter(nodeAdapter);
         showData();
     }
@@ -100,7 +102,12 @@ public class ListOfNodesActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void selectedNode(Node node) {
+        Intent intent = new Intent(this, NodeDetailsActivity.class).putExtra("data", node);
+        startActivity(intent);
     }
 }

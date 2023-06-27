@@ -13,14 +13,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
 
-    public void startListOfNodesActivity(View view){
-        Intent intent = new Intent(MainActivity.this, ListOfNodesActivity.class);
+    public void startListOfNodesActivity(View view) {
+        Intent intent = new Intent(this, ListOfNodesActivity.class);
         startActivity(intent);
     }
-
 
 
 }

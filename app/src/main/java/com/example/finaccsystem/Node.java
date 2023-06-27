@@ -1,18 +1,20 @@
 package com.example.finaccsystem;
 
-public class Node {
+import java.io.Serializable;
+
+public class Node implements Serializable {
 
     private String name; // название
     private String amount;  // баланс
     private String currency; //валюта
     private int iconResource; // ресурс флага
 
-    public Node(String name, String amount, String currency, int icon){
+    public Node(String name, String amount, String currency, int icon) {
 
-        this.name=name;
-        this.amount=amount;
-        this.currency=currency;
-        this.iconResource=icon;
+        this.name = name;
+        this.amount = amount;
+        this.currency = currency;
+        this.iconResource = icon;
     }
 
     public String getName() {
@@ -31,13 +33,14 @@ public class Node {
         this.amount = amount;
     }
 
-    public String getCurrency(){
-         return this.currency;
+    public String getCurrency() {
+        return this.currency;
     }
 
-    public void setCurrency(String currency){
-        this.currency=currency;
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
+
     public int getIconResource() {
         return this.iconResource;
     }
