@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/buttonImage"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/cash"
@@ -26,13 +26,14 @@
             app:layout_constraintVertical_bias="0.2" />
 
         <TextView
+            android:id="@+id/buttonName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Перевести или оплатить"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image"
+            app:layout_constraintTop_toBottomOf="@+id/buttonImage"
             app:layout_constraintVertical_bias="0.2"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

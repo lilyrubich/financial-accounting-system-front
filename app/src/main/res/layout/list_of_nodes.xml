@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -42,7 +41,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/llToolbar">
-    <!--app:layout_constraintBottom_toTopOf="@id/sum_back"-->
+        <!--app:layout_constraintBottom_toTopOf="@id/sum_back"-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvNodes"
