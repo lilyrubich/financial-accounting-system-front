@@ -1,5 +1,8 @@
 package com.example.finaccsystem;
 
+import com.example.finaccsystem.model.Node;
+import com.example.finaccsystem.tasks.GetNodesTask;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -7,32 +10,36 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
+
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ListOfNodesActivity extends AppCompatActivity implements NodeAdapter.NodeClickListener {
 
-    RecyclerView rvNodes;
-    NodeAdapter nodeAdapter;
-    ArrayList<Node> nodes = new ArrayList<Node>();
-    Toolbar toolbar;
-
+    private RecyclerView rvNodes;
+    private NodeAdapter nodeAdapter;
+    private ArrayList<Node> nodes;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_of_nodes);
         RecyclerView recyclerView = findViewById(R.id.rvNodes);
         recyclerView.setAdapter(nodeAdapter);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        //toDo: летающая кнопка
+        //FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         initData();
     }
 
@@ -51,9 +58,6 @@ public class ListOfNodesActivity extends AppCompatActivity implements NodeAdapte
 
 
     private void initRecyclerView() {
-//ПРОВЕРКА
-        //Toast.makeText(ListOfNodesActivity.this, "user ", Toast.LENGTH_SHORT).show();
-
         rvNodes.setLayoutManager(new LinearLayoutManager(this));
         nodeAdapter = new NodeAdapter(this, nodes, this::selectedNode);
         //nodeAdapter = new NodeAdapter( getApplicationContext(), nodes);
@@ -64,7 +68,7 @@ public class ListOfNodesActivity extends AppCompatActivity implements NodeAdapte
 
     private List populateNodes() {
         ArrayList<Node> nodes = new ArrayList<Node>();
-        nodes.add(new Node("Карта Совком", "120000", "₽", R.drawable.credit_card));
+        /*nodes.add(new Node("Карта Совком", "120000", "₽", R.drawable.credit_card));
         nodes.add(new Node("Наличка у мамы", "344000", "$", R.drawable.cash));
         nodes.add(new Node("Долг Лили", "200", "$", R.drawable.pay));
         nodes.add(new Node("Биткоины", "0.001", "₿", R.drawable.bitcoin));
@@ -72,7 +76,13 @@ public class ListOfNodesActivity extends AppCompatActivity implements NodeAdapte
         nodes.add(new Node("Наличка в евро", "100", "€", R.drawable.euro));
         nodes.add(new Node("Вклад Альфа", "105000", "₽", R.drawable.time_is_money));
         nodes.add(new Node("На карте Шри-Ланки", "300", "€", R.drawable.euro));
-        nodes.add(new Node("Карта Сбер", "54000", "₽", R.drawable.credit_card));
+        nodes.add(new Node("Карта Сбер", "54000", "₽", R.drawable.credit_card));*/
+
+        try {
+            nodes = (ArrayList<Node>) sendGetNodes();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return nodes;
     }
 
@@ -109,5 +119,14 @@ public class ListOfNodesActivity extends AppCompatActivity implements NodeAdapte
     public void selectedNode(Node node) {
         Intent intent = new Intent(this, NodeDetailsActivity.class).putExtra("data", node);
         startActivity(intent);
+    }
+
+
+    // on below line creating a class to post the data.
+    private List<Node> sendGetNodes() throws IOException, ExecutionException, InterruptedException {
+        // on below line creating a url to post the data.
+        URL url = new URL("http://192.168.1.3:8081");
+        GetNodesTask task = new GetNodesTask();
+        return task.execute(url).get();
     }
 }

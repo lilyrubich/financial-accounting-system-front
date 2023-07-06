@@ -1,6 +1,5 @@
 package com.example.finaccsystem;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -14,11 +13,10 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.NodeList;
 
-import java.util.ArrayList;
+import com.example.finaccsystem.model.Node;
+
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> implements Filterable {

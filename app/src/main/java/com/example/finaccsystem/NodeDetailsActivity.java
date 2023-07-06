@@ -1,39 +1,44 @@
 package com.example.finaccsystem;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.finaccsystem.model.Node;
+
 public class NodeDetailsActivity extends AppCompatActivity {
 
-    TextView txt_node_name;
-    Node node;
-    Intent intent;
+    private TextView node_name, amount, description;
+    private Node node;
+    private Intent intent;
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.node_details);
-        txt_node_name = findViewById(R.id.txt_node_name);
+        node_name = findViewById(R.id.txt_node_name);
+        amount = findViewById(R.id.txt_amount);
+        description = findViewById(R.id.txt_description);
 
         intent = getIntent();
         if (intent != null) {
             node = (Node) intent.getSerializableExtra("data");
-            String nodeName = node.getName();
-            txt_node_name.setText(nodeName);
+            node_name.setText(node.getName());
+            amount.setText(node.getAmount()+" "+node.getCurrency());
+            description.setText(node.getDescription());
+
         }
     }
 
     public void initData() {
-
-
     }
 
     private void getData() {
@@ -55,4 +60,6 @@ public class NodeDetailsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TransactionActivity.class);
         startActivity(intent);
     }
+
+
 }

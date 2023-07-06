@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,6 +10,7 @@
         android:icon="@drawable/piggy_bank"
         android:label="@string/app_name"
         android:roundIcon="@drawable/piggy_bank"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinAccSystem"
         tools:targetApi="31">
@@ -31,9 +33,12 @@
 
         <activity android:name="com.example.finaccsystem.TransactionActivity" />
 
+        <activity android:name="com.example.finaccsystem.StatusOfTransactionActivity"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
     </application>
 
 </manifest>
