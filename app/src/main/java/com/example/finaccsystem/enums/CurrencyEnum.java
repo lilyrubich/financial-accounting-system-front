@@ -1,4 +1,4 @@
-package com.example.finaccsystem;
+package com.example.finaccsystem.enums;
 
 public enum CurrencyEnum {
     DOLLAR_USA(1, "Доллар США", "$"),

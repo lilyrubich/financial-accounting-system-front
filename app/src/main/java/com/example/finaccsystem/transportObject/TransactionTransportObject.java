@@ -1,5 +1,7 @@
 package com.example.finaccsystem.transportObject;
 
+import com.google.gson.annotations.JsonAdapter;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -10,12 +12,12 @@ public class TransactionTransportObject {
     private String receiverNodeId;
     private BigDecimal senderAmount;
     private BigDecimal receiverAmount;
-    private LocalDate dateTime;
+    private String dateTime;
 
     public TransactionTransportObject() {
     }
 
-    public TransactionTransportObject(String id, String description, String senderNodeId, String receiverNodeId, BigDecimal senderAmount, BigDecimal receiverAmount, LocalDate dateTime) {
+    public TransactionTransportObject(String id, String description, String senderNodeId, String receiverNodeId, BigDecimal senderAmount, BigDecimal receiverAmount, String dateTime) {
         this.id = id;
         this.description = description;
         this.senderNodeId = senderNodeId;
@@ -73,11 +75,12 @@ public class TransactionTransportObject {
         this.receiverAmount = receiverAmount;
     }
 
-    public LocalDate getDateTime() {
+    public String getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDate dateTime) {
-        this.dateTime = dateTime;
+    public void setDateTime(String time) {
+        this.dateTime = time;
     }
 }
+

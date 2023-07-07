@@ -1,8 +1,8 @@
-package com.example.finaccsystem.tasks;
+package com.example.finaccsystem.task;
 
 import android.os.AsyncTask;
 
-import com.example.finaccsystem.CurrencyEnum;
+import com.example.finaccsystem.enums.CurrencyEnum;
 import com.example.finaccsystem.model.Node;
 import com.example.finaccsystem.transportObject.NodeTransportObject;
 import com.example.finaccsystem.R;

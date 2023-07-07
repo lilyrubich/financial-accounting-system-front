@@ -1,4 +1,4 @@
-package com.example.finaccsystem;
+package com.example.finaccsystem.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.finaccsystem.R;
 import com.example.finaccsystem.model.Node;
 
 public class NodeDetailsActivity extends AppCompatActivity {

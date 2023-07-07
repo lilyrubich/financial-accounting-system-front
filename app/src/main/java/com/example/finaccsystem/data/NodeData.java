@@ -1,4 +1,4 @@
-package com.example.finaccsystem;
+package com.example.finaccsystem.data;
 
 public class NodeData{
 

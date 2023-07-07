@@ -1,8 +1,10 @@
-package com.example.finaccsystem;
+package com.example.finaccsystem.activity;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.finaccsystem.R;
 
 public class StatusOfTransactionActivity extends AppCompatActivity {
 

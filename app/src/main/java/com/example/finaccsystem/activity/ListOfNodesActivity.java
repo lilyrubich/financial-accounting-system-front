@@ -1,7 +1,10 @@
-package com.example.finaccsystem;
+package com.example.finaccsystem.activity;
 
+import com.example.finaccsystem.R;
+import com.example.finaccsystem.activity.NodeDetailsActivity;
+import com.example.finaccsystem.adapter.NodeAdapter;
 import com.example.finaccsystem.model.Node;
-import com.example.finaccsystem.tasks.GetNodesTask;
+import com.example.finaccsystem.task.GetNodesTask;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

@@ -15,7 +15,7 @@
         android:theme="@style/Theme.FinAccSystem"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,13 +27,13 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name="com.example.finaccsystem.ListOfNodesActivity" />
+        <activity android:name="com.example.finaccsystem.activity.ListOfNodesActivity" />
 
-        <activity android:name="com.example.finaccsystem.NodeDetailsActivity" />
+        <activity android:name="com.example.finaccsystem.activity.NodeDetailsActivity" />
 
-        <activity android:name="com.example.finaccsystem.TransactionActivity" />
+        <activity android:name="com.example.finaccsystem.activity.TransactionActivity" />
 
-        <activity android:name="com.example.finaccsystem.StatusOfTransactionActivity"/>
+        <activity android:name="com.example.finaccsystem.activity.StatusOfTransactionActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

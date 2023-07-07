@@ -1,4 +1,4 @@
-package com.example.finaccsystem;
+package com.example.finaccsystem.adapter;
 
 import android.content.Context;
 import android.os.Build;
@@ -14,6 +14,7 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.finaccsystem.R;
 import com.example.finaccsystem.model.Node;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.finaccsystem;
+package com.example.finaccsystem.activity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -16,10 +16,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.finaccsystem.R;
 import com.example.finaccsystem.model.Node;
 import com.example.finaccsystem.model.Transaction;
-import com.example.finaccsystem.tasks.GetNodesTask;
-import com.example.finaccsystem.tasks.PostTransactionTask;
+import com.example.finaccsystem.task.GetNodesTask;
+import com.example.finaccsystem.task.PostTransactionTask;
 import com.example.finaccsystem.transportObject.TransactionTransportObject;
 
 import java.io.IOException;
@@ -30,6 +31,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import retrofit2.Response;
 
 public class TransactionActivity extends AppCompatActivity {
 
@@ -159,12 +162,12 @@ public class TransactionActivity extends AppCompatActivity {
         return nodesNameList;
     }
 
-    private ArrayList<String> sendPostTransaction() throws IOException, ExecutionException, InterruptedException {
+    private TransactionTransportObject sendPostTransaction() throws IOException, ExecutionException, InterruptedException {
         // on below line creating a url to post the data.
         //URL url = new URL("http://192.168.1.7:8081");
         PostTransactionTask task = new PostTransactionTask();
         TransactionTransportObject tto = task.execute(transaction).get();
-        return null;
+        return tto;
     }
 
 
@@ -180,9 +183,11 @@ public class TransactionActivity extends AppCompatActivity {
         transaction.setReceiverNodeId(receiverNode.getId());
         transaction.setDate(dateAndTime.getTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
 
-        sendPostTransaction();
-        Intent intent = new Intent(this, ListOfNodesActivity.class);
-        startActivity(intent);
+        TransactionTransportObject executePostRequest = sendPostTransaction();
+        if (executePostRequest != null) {
+            Intent intent = new Intent(this, StatusOfTransactionActivity.class);
+            startActivity(intent);
+        }
     }
 
 }
