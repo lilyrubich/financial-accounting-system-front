@@ -5,11 +5,17 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Transaction implements Serializable {
-    private String id, senderNodeId, receiverNodeId,senderNodeName, receiverNodeName, description;
+    private String id;
+    String senderNodeId;
+    String receiverNodeId;
+    String senderNodeName;
+    String receiverNodeName;
+    String description;
     private LocalDate date;
     private BigDecimal senderAmount, receiverAmount;
 
-    public Transaction(){}
+    public Transaction() {
+    }
 
     public String getId() {
         return id;
