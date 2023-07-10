@@ -5,6 +5,7 @@ import com.example.finaccsystem.activity.NodeDetailsActivity;
 import com.example.finaccsystem.adapter.NodeAdapter;
 import com.example.finaccsystem.model.Node;
 import com.example.finaccsystem.task.GetNodesTask;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 import java.io.IOException;
@@ -128,8 +130,13 @@ public class ListOfNodesActivity extends AppCompatActivity implements NodeAdapte
     // on below line creating a class to post the data.
     private List<Node> sendGetNodes() throws IOException, ExecutionException, InterruptedException {
         // on below line creating a url to post the data.
-        URL url = new URL("http://192.168.1.3:8081");
+        URL url = new URL("http://94.142.141.198:8081");
         GetNodesTask task = new GetNodesTask();
         return task.execute(url).get();
+    }
+
+    public void startNewNodeActivity(View view){
+        Intent intent = new Intent(this, NewNodeActivity.class);
+        startActivity(intent);
     }
 }

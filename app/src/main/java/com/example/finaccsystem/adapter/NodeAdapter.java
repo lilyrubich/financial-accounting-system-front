@@ -49,7 +49,7 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> im
         Node node = nodes.get(position);
         holder.iconView.setImageResource(node.getIconResource());
         holder.nameView.setText(node.getName());
-        holder.amountView.setText(node.getAmount());
+        holder.amountView.setText(node.getAmount().toString());
         holder.currencyView.setText(node.getCurrency());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

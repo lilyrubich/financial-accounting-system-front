@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,16 +33,18 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import retrofit2.Response;
-
-public class TransactionActivity extends AppCompatActivity {
+public class NewTransactionActivity extends AppCompatActivity {
 
 
     private Intent intent;
     private List<Node> nodes;
     private ArrayList<String> nodesNameList;
     private Calendar dateAndTime = Calendar.getInstance();
-    private EditText editTextDate, description, senderAmount, receiverAmount;
+    private EditText editTextDate;
+    private EditText description;
+    private EditText senderAmount;
+    private EditText receiverAmount;
+
     private TextView senderCurrency, receiverCurrency;
     private Spinner spinnerSender, spinnerReceiver;
     private CardView addTransactionButton;
@@ -64,7 +67,7 @@ public class TransactionActivity extends AppCompatActivity {
 
 
         try {
-            nodes = sendGetNodes2();
+            nodes = sendGetNodes();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -88,7 +91,6 @@ public class TransactionActivity extends AppCompatActivity {
 
                 // Получаем выбранный объект
                 Node item = (Node) parent.getItemAtPosition(position);
-                //senderNodeSelection.setText(item);
             }
 
             @Override
@@ -126,26 +128,8 @@ public class TransactionActivity extends AppCompatActivity {
         }
     };
 
-    // on below line creating a class to get the data to the spinner.
-    //рабочая версия с возвращением только стринги имен нод
-    /*
-    private ArrayList<String> sendGetNodes() throws IOException, ExecutionException, InterruptedException {
-        // on below line creating a url to post the data.
-        URL url = new URL("http://192.168.1.7:8081");
-        GetNodesTask task = new GetNodesTask();
-        List<Node> nodes = task.execute().get();
 
-        ArrayList<String> nodesNameList = new ArrayList<>();
-
-        for (Node value : nodes) {
-            nodesNameList.add(value.getName());
-        }
-
-        return nodesNameList;
-    }*/
-
-
-    private List<Node> sendGetNodes2() throws IOException, ExecutionException, InterruptedException {
+    private List<Node> sendGetNodes() throws IOException, ExecutionException, InterruptedException {
         // on below line creating a url to post the data.
         //URL url = new URL("http://192.168.1.7:8081");
         URL url = new URL("http://192.168.1.3:8081");
@@ -190,4 +174,14 @@ public class TransactionActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            Intent intent = new Intent(this, Transaction.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
 }

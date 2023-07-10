@@ -11,18 +11,6 @@ public class Transaction implements Serializable {
 
     public Transaction(){}
 
-    public Transaction(String id, String senderNodeId, String receiverNodeId, String senderNodeName, String receiverNodeName, BigDecimal senderAmount, BigDecimal receiverAmount, String description, LocalDate date) {
-        this.id = id;
-        this.senderNodeId = senderNodeId;
-        this.receiverNodeId = receiverNodeId;
-        this.senderNodeName = senderNodeName;
-        this.receiverNodeName = receiverNodeName;
-        this.senderAmount = senderAmount;
-        this.receiverAmount = receiverAmount;
-        this.description = description;
-        this.date = date;
-    }
-
     public String getId() {
         return id;
     }

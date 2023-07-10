@@ -4,14 +4,10 @@ import android.os.AsyncTask;
 
 import com.example.finaccsystem.model.Transaction;
 import com.example.finaccsystem.transportObject.TransactionTransportObject;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -26,13 +22,13 @@ public class PostTransactionTask extends AsyncTask<Transaction, Void, Transactio
         Response<TransactionTransportObject> execute = null;
         try {
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.1.3:8081")
+                    .baseUrl("http://94.142.141.198:8081")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 
             RequestTransaction requestTransaction = retrofit.create(RequestTransaction.class);
-            TransactionTransportObject transactionTransportObject = TransactionToTORequestConverter(transaction[0]);
-            execute = requestTransaction.postNewTransaction("Basic bGlseToxMjM=", transactionTransportObject).execute();
+            TransactionTransportObject transactionTransportObject = transactionToTORequestConverter(transaction[0]);
+            execute = requestTransaction.postNewTransaction("Basic a29sOjEyMw==", transactionTransportObject).execute();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -45,7 +41,7 @@ public class PostTransactionTask extends AsyncTask<Transaction, Void, Transactio
         Call<TransactionTransportObject> postNewTransaction(@Header("Authorization") String authorization, @Body TransactionTransportObject transactionTransportObject);
     }
 
-    public TransactionTransportObject TransactionToTORequestConverter(Transaction transaction) {
+    public TransactionTransportObject transactionToTORequestConverter(Transaction transaction) {
         TransactionTransportObject tto = new TransactionTransportObject();
         tto.setSenderNodeId(transaction.getSenderNodeId());
         tto.setReceiverNodeId(transaction.getReceiverNodeId());

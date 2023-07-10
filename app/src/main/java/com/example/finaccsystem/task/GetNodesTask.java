@@ -34,12 +34,12 @@ public class GetNodesTask extends AsyncTask<URL, Void, List<Node>> {
         //Retrofit turns your HTTP API into a Java interface
         //The Retrofit class generates an implementation of the RequestNode interface
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.3:8081")
+                .baseUrl("http://94.142.141.198:8081")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         RequestNode requestNode = retrofit.create(RequestNode.class);
-        Response<List<NodeTransportObject>> execute = requestNode.getListOfNodes("Basic bGlseToxMjM=").execute();
+        Response<List<NodeTransportObject>> execute = requestNode.getListOfNodes("Basic a29sOjEyMw==").execute();
         return ListOfNodesConverter(execute.body());
     }
 
@@ -51,7 +51,7 @@ public class GetNodesTask extends AsyncTask<URL, Void, List<Node>> {
     public List<Node> ListOfNodesConverter(List<NodeTransportObject> nodeTransportObjects) {
         ArrayList<Node> nodes = new ArrayList<>();
         for (NodeTransportObject value : nodeTransportObjects) {
-            nodes.add(new Node(value.getName(), value.getAmount().setScale(2).toString(), CurrencyEnum.getSymbolById(value.getCurrencyId()), R.drawable.circle_1, value.getId(), value.getDescription(), value.getUserId(), value.isExternal()));
+            nodes.add(new Node(value.getName(), value.getAmount().setScale(2), CurrencyEnum.getCurrencySymbolById(value.getCurrencyId()), R.drawable.circle_1, value.getId(), value.getDescription(), value.getUserId(), value.isExternal()));
         }
         return nodes;
     }

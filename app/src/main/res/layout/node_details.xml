@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="false">
+    android:clickable="false"
+    android:layout_marginHorizontal="20dp">
 
     <TextView
         android:id="@+id/txt_node_name"
@@ -53,9 +54,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/buttonPayment"
-        android:layout_width="230dp"
+        android:layout_width="200dp"
         android:layout_height="100dp"
-        android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="5dp"
         android:onClick="startNewTransactionActivity"
         app:cardCornerRadius="20dp"
@@ -99,7 +99,7 @@
         android:id="@+id/buttonTopUp"
         android:layout_width="150dp"
         android:layout_height="100dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginVertical="5dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="4dp"
@@ -142,9 +142,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/buttonOther"
-        android:layout_width="230dp"
+        android:layout_width="200dp"
         android:layout_height="60dp"
-        android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="5dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="4dp"
@@ -185,7 +184,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginVertical="5dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="4dp"
@@ -228,7 +227,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="10dp"
@@ -243,12 +242,12 @@
             android:id="@+id/OperationHistory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="110dp"
             android:layout_marginVertical="10dp"
             android:text="История операций"
             android:textColor="@color/white"
             android:textSize="18dp"
             android:textStyle="bold"
+            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

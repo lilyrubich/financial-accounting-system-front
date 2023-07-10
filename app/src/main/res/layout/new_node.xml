@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="10dp">
+
+    <ActionMenuView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tooltipText="dsadsa" />
+
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Название"
+        android:textColor="@color/gray"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nodeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="20"
+        android:inputType="text"
+        android:maxLength="50"
+        app:layout_constraintTop_toBottomOf="@+id/textName"
+        tools:focusable="false"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Описание"
+        android:textColor="@color/gray"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@+id/nodeName" />
+
+    <EditText
+        android:id="@+id/nodeDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="20"
+        android:inputType="text"
+        android:maxLength="50"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textDescription"
+        tools:focusable="false" />
+
+    <TextView
+        android:id="@+id/textAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Баланс"
+        android:textColor="@color/gray"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nodeDescription" />
+
+    <EditText
+        android:id="@+id/nodeAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="13"
+        android:inputType="number"
+        android:maxLength="50"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAmount"
+        tools:focusable="false" />
+
+    <TextView
+        android:id="@+id/textCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="30dp"
+        android:layout_marginTop="10dp"
+        android:text="Валюта"
+        android:textColor="@color/gray"
+        android:textSize="13sp"
+        app:layout_constraintLeft_toRightOf="@+id/nodeAmount"
+        app:layout_constraintTop_toBottomOf="@+id/nodeDescription" />
+
+    <Spinner
+        android:id="@+id/spinnerNodeCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:minWidth="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/nodeAmount"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textCurrency" />
+
+    <Switch
+        android:id="@+id/switchIsExternal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="40dp"
+        android:checked="false"
+        android:text="Внешняя"
+        android:textColor="@color/gray"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nodeAmount" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Внешние ноды не учитываются при расчете баланса кошелька"
+        android:textSize="11sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/switchIsExternal" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/executeButton"
+        android:layout_width="380dp"
+        android:layout_height="45dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"
+        android:backgroundTint="@color/blue_500"
+        android:onClick="executeAddNode"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="110dp"
+            android:layout_marginVertical="10dp"
+            android:text="Добавить"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,7 +58,7 @@ public class NodeDetailsActivity extends AppCompatActivity {
     }
 
     public void startNewTransactionActivity(View view) {
-        Intent intent = new Intent(this, TransactionActivity.class);
+        Intent intent = new Intent(this, NewTransactionActivity.class);
         startActivity(intent);
     }
 

@@ -1,11 +1,12 @@
 package com.example.finaccsystem.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class Node implements Serializable {
 
     private String name; // название
-    private String amount;  // баланс
+    private BigDecimal amount;  // баланс
     private String currency; //валюта
     private int iconResource; // ресурс флага
 
@@ -14,22 +15,7 @@ public class Node implements Serializable {
     private String userId;
     private boolean isExternal;
 
-    public Node(String name, String amount, String currency, int icon) {
-
-        this.name = name;
-        this.amount = amount;
-        this.currency = currency;
-        this.iconResource = icon;
-    }
-
-    public Node(String name, String amount, String currency) {
-
-        this.name = name;
-        this.amount = amount;
-        this.currency = currency;
-    }
-
-    public Node(String name, String amount, String currency, int iconResource, String id, String description, String userId, boolean isExternal) {
+    public Node(String name, BigDecimal amount, String currency, int iconResource, String id, String description, String userId, boolean isExternal) {
         this.name = name;
         this.amount = amount;
         this.currency = currency;
@@ -40,6 +26,10 @@ public class Node implements Serializable {
         this.isExternal = isExternal;
     }
 
+    public Node() {
+
+    }
+
     public String getName() {
         return this.name;
     }
@@ -48,11 +38,11 @@ public class Node implements Serializable {
         this.name = name;
     }
 
-    public String getAmount() {
+    public BigDecimal getAmount() {
         return this.amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
