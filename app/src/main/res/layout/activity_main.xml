@@ -96,6 +96,7 @@
                     android:layout_width="90dp"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
+                    android:onClick="startListOfTransactionsActivity"
                     android:background="@drawable/background_button">
 
                     <ImageView

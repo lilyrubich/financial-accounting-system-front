@@ -9,12 +9,23 @@ public class TransactionTransportObject {
     private String id;
     private String description;
     private String senderNodeId;
+    private String senderNodeName;
     private String receiverNodeId;
+    private String receiverNodeName;
     private BigDecimal senderAmount;
     private BigDecimal receiverAmount;
     private String dateTime;
+    private String time;
 
     public TransactionTransportObject() {
+    }
+
+    public String getSenderNodeName() {
+        return senderNodeName;
+    }
+
+    public String getReceiverNodeName() {
+        return receiverNodeName;
     }
 
     public TransactionTransportObject(String id, String description, String senderNodeId, String receiverNodeId, BigDecimal senderAmount, BigDecimal receiverAmount, String dateTime) {
@@ -81,6 +92,22 @@ public class TransactionTransportObject {
 
     public void setDateTime(String time) {
         this.dateTime = time;
+    }
+
+    public void setSenderNodeName(String senderNodeName) {
+        this.senderNodeName = senderNodeName;
+    }
+
+    public void setReceiverNodeName(String receiverNodeName) {
+        this.receiverNodeName = receiverNodeName;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }
 
