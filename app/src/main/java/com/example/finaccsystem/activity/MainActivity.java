@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.finaccsystem.R;
+import com.example.finaccsystem.model.Node;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -65,7 +65,6 @@ public class NewTransactionActivity extends AppCompatActivity {
         spinnerSender = findViewById(R.id.spinnerSenderNode);
         spinnerReceiver = findViewById(R.id.spinnerReceiverNode);
 
-
         try {
             nodes = sendGetNodes();
         } catch (IOException e) {
@@ -177,7 +176,7 @@ public class NewTransactionActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)  {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            Intent intent = new Intent(this, Transaction.class);
+            Intent intent = new Intent(this, ListOfNodesActivity.class);
             startActivity(intent);
             return true;
         }

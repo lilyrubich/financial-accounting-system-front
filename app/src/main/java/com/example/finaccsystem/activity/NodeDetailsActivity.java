@@ -15,6 +15,7 @@ import com.example.finaccsystem.model.Node;
 
 public class NodeDetailsActivity extends AppCompatActivity {
 
+    private String authorizationHeader;
     private TextView node_name, amount, description;
     private Node node;
     private Intent intent;
@@ -31,11 +32,10 @@ public class NodeDetailsActivity extends AppCompatActivity {
 
         intent = getIntent();
         if (intent != null) {
-            node = (Node) intent.getSerializableExtra("data");
+            node = (Node) intent.getSerializableExtra("selectedNode");
             node_name.setText(node.getName());
-            amount.setText(node.getAmount()+" "+node.getCurrency());
+            amount.setText(node.getAmount() + " " + node.getCurrency());
             description.setText(node.getDescription());
-
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.finaccsystem.task;
 
 import android.os.AsyncTask;
 
+import com.example.finaccsystem.data.ClientDataHolder;
 import com.example.finaccsystem.enums.CurrencyEnum;
 import com.example.finaccsystem.model.Node;
 import com.example.finaccsystem.transportObject.NodeTransportObject;
@@ -29,7 +30,7 @@ public class PostNodeTask extends AsyncTask<Node, Void, NodeTransportObject> {
 
             PostNodeTask.RequestNode requestNode = retrofit.create(PostNodeTask.RequestNode.class);
             NodeTransportObject nodeTransportObject = nodeToTORequestConverter(node[0]);
-            execute = requestNode.postNewNode("Basic a29sOjEyMw==", nodeTransportObject).execute();
+            execute = requestNode.postNewNode(ClientDataHolder.getInstance().getAuth(), nodeTransportObject).execute();
         } catch (IOException e) {
             e.printStackTrace();
         }

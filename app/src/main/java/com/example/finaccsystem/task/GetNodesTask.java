@@ -2,6 +2,7 @@ package com.example.finaccsystem.task;
 
 import android.os.AsyncTask;
 
+import com.example.finaccsystem.data.ClientDataHolder;
 import com.example.finaccsystem.enums.CurrencyEnum;
 import com.example.finaccsystem.model.Node;
 import com.example.finaccsystem.transportObject.NodeTransportObject;
@@ -21,7 +22,7 @@ import retrofit2.http.Header;
 
 public class GetNodesTask extends AsyncTask<URL, Void, List<Node>> {
     @Override
-    protected List<Node> doInBackground(URL... urls) {
+    protected List<Node> doInBackground(URL...urls) {
         try {
             return getNodes(urls[0]);
         } catch (IOException e) {
@@ -39,7 +40,7 @@ public class GetNodesTask extends AsyncTask<URL, Void, List<Node>> {
                 .build();
 
         RequestNode requestNode = retrofit.create(RequestNode.class);
-        Response<List<NodeTransportObject>> execute = requestNode.getListOfNodes("Basic a29sOjEyMw==").execute();
+        Response<List<NodeTransportObject>> execute = requestNode.getListOfNodes(ClientDataHolder.getInstance().getAuth()).execute();
         return ListOfNodesConverter(execute.body());
     }
 

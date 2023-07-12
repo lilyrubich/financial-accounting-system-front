@@ -1,11 +1,17 @@
 package com.example.finaccsystem.task;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 
+import com.example.finaccsystem.activity.StatusOfTransactionActivity;
+import com.example.finaccsystem.data.ClientDataHolder;
+import com.example.finaccsystem.model.Node;
 import com.example.finaccsystem.model.Transaction;
 import com.example.finaccsystem.transportObject.TransactionTransportObject;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 import retrofit2.Call;
@@ -17,6 +23,7 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public class PostTransactionTask extends AsyncTask<Transaction, Void, TransactionTransportObject> {
+
     @Override
     protected TransactionTransportObject doInBackground(Transaction... transaction) {
         Response<TransactionTransportObject> execute = null;
@@ -28,7 +35,7 @@ public class PostTransactionTask extends AsyncTask<Transaction, Void, Transactio
 
             RequestTransaction requestTransaction = retrofit.create(RequestTransaction.class);
             TransactionTransportObject transactionTransportObject = transactionToTORequestConverter(transaction[0]);
-            execute = requestTransaction.postNewTransaction("Basic a29sOjEyMw==", transactionTransportObject).execute();
+            execute = requestTransaction.postNewTransaction(ClientDataHolder.getInstance().getAuth(), transactionTransportObject).execute();
         } catch (IOException e) {
             e.printStackTrace();
         }
