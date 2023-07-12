@@ -1,5 +1,7 @@
 package com.example.finaccsystem.adapter;
 
+import static java.io.File.separator;
+
 import android.content.Context;
 import android.os.Build;
 import android.view.LayoutInflater;
@@ -101,7 +103,9 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> im
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView iconView;
-        final TextView nameView, amountView, currencyView;
+        final TextView nameView;
+        TextView amountView;
+        TextView currencyView;
 
         public ViewHolder(View view) {
             super(view);

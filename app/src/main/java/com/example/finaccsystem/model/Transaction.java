@@ -14,7 +14,41 @@ public class Transaction implements Serializable {
     private LocalDate date;
     private BigDecimal senderAmount, receiverAmount;
 
+    private String senderCurrency;
+
+    private String receiverCurrency;
+
     public Transaction() {
+    }
+
+    public Transaction(String id, String description, String senderNodeId, String senderNodeName, BigDecimal senderAmount, String receiverNodeId, String receiverNodeName, BigDecimal receiverAmount, LocalDate date) {
+        this.id = id;
+        this.description = description;
+        this.senderNodeId = senderNodeId;
+        this.senderNodeName = senderNodeName;
+        this.senderAmount = senderAmount;
+        this.senderCurrency = senderCurrency;
+        this.receiverNodeId = receiverNodeId;
+        this.receiverNodeName = receiverNodeName;
+        this.receiverAmount = receiverAmount;
+        this.receiverCurrency = receiverCurrency;
+        this.date = date;
+    }
+
+    public String getSenderCurrency() {
+        return senderCurrency;
+    }
+
+    public void setSenderCurrency(String senderCurrency) {
+        this.senderCurrency = senderCurrency;
+    }
+
+    public String getReceiverCurrency() {
+        return receiverCurrency;
+    }
+
+    public void setReceiverCurrency(String receiverCurrency) {
+        this.receiverCurrency = receiverCurrency;
     }
 
     public String getId() {
