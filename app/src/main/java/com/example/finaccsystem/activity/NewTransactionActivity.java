@@ -44,10 +44,8 @@ public class NewTransactionActivity extends AppCompatActivity {
     private EditText description;
     private EditText senderAmount;
     private EditText receiverAmount;
-
     private TextView senderCurrency, receiverCurrency;
     private Spinner spinnerSender, spinnerReceiver;
-    private CardView addTransactionButton;
     private Transaction transaction = new Transaction();
 
     @SuppressLint("MissingInflatedId")
@@ -59,9 +57,10 @@ public class NewTransactionActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         senderAmount = findViewById(R.id.senderAmount);
         receiverAmount = findViewById(R.id.receiverAmount);
+        senderCurrency = findViewById(R.id.senderCurrency);
+        receiverCurrency = findViewById(R.id.receiverCurrency);
         intent = getIntent();
         setInitialDateTime();
-        addTransactionButton = findViewById(R.id.executeButton);
         spinnerSender = findViewById(R.id.spinnerSenderNode);
         spinnerReceiver = findViewById(R.id.spinnerReceiverNode);
 
@@ -84,20 +83,35 @@ public class NewTransactionActivity extends AppCompatActivity {
         spinnerSender.setAdapter(adapter);
         spinnerReceiver.setAdapter(adapter);
 
-        AdapterView.OnItemSelectedListener itemSelectedListener = new AdapterView.OnItemSelectedListener() {
+        AdapterView.OnItemSelectedListener senderNodeSelectedListener = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 // Получаем выбранный объект
-                Node item = (Node) parent.getItemAtPosition(position);
+                Node selectedNode = (Node) parent.getItemAtPosition(position);
+                senderCurrency.setText(selectedNode.getCurrency());
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
         };
-        spinnerSender.setOnItemSelectedListener(itemSelectedListener);
-        spinnerReceiver.setOnItemSelectedListener(itemSelectedListener);
+
+        AdapterView.OnItemSelectedListener receiverNodeSelectedListener = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                // Получаем выбранный объект
+                Node selectedNode = (Node) parent.getItemAtPosition(position);
+                receiverCurrency.setText(selectedNode.getCurrency());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        };
+        spinnerSender.setOnItemSelectedListener(senderNodeSelectedListener);
+        spinnerReceiver.setOnItemSelectedListener(receiverNodeSelectedListener);
     }
 
     // установка начальной даты
@@ -174,13 +188,12 @@ public class NewTransactionActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             Intent intent = new Intent(this, ListOfNodesActivity.class);
             startActivity(intent);
             return true;
         }
-
         return super.onKeyDown(keyCode, event);
     }
 }

@@ -8,10 +8,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/piggy_bank"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@drawable/piggy_bank"
         android:supportsRtl="true"
         android:theme="@style/Theme.FinAccSystem"
         tools:targetApi="31">
@@ -29,6 +28,8 @@
         <activity android:name="com.example.finaccsystem.activity.StatusOfTransactionActivity" />
 
         <activity android:name="com.example.finaccsystem.activity.NewNodeActivity" />
+
+        <activity android:name="com.example.finaccsystem.activity.ListOfTransactionsActivity" />
 
         <activity
             android:name="com.example.finaccsystem.activity.LoginActivity"

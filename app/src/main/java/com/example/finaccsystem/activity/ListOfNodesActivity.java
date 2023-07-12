@@ -59,7 +59,6 @@ public class ListOfNodesActivity extends AppCompatActivity implements NodeAdapte
         rvNodes = findViewById(R.id.rvNodes);
         toolbar = findViewById(R.id.tbToolbar);
         this.setSupportActionBar(toolbar);
-        this.setTitle("");
         initRecyclerView();
     }
 
@@ -67,7 +66,6 @@ public class ListOfNodesActivity extends AppCompatActivity implements NodeAdapte
     private void initRecyclerView() {
         rvNodes.setLayoutManager(new LinearLayoutManager(this));
         nodeAdapter = new NodeAdapter(this, nodes, this::selectedNode);
-        //nodeAdapter = new NodeAdapter( getApplicationContext(), nodes);
         rvNodes.setAdapter(nodeAdapter);
         showData();
     }
@@ -75,16 +73,6 @@ public class ListOfNodesActivity extends AppCompatActivity implements NodeAdapte
 
     private List populateNodes() {
         ArrayList<Node> nodes = new ArrayList<Node>();
-        /*nodes.add(new Node("Карта Совком", "120000", "₽", R.drawable.credit_card));
-        nodes.add(new Node("Наличка у мамы", "344000", "$", R.drawable.cash));
-        nodes.add(new Node("Долг Лили", "200", "$", R.drawable.pay));
-        nodes.add(new Node("Биткоины", "0.001", "₿", R.drawable.bitcoin));
-        nodes.add(new Node("Вклад УБРиР", "177990", "₽", R.drawable.time_is_money));
-        nodes.add(new Node("Наличка в евро", "100", "€", R.drawable.euro));
-        nodes.add(new Node("Вклад Альфа", "105000", "₽", R.drawable.time_is_money));
-        nodes.add(new Node("На карте Шри-Ланки", "300", "€", R.drawable.euro));
-        nodes.add(new Node("Карта Сбер", "54000", "₽", R.drawable.credit_card));*/
-
         try {
             nodes = (ArrayList<Node>) sendGetNodes();
         } catch (Exception e) {
@@ -144,7 +132,7 @@ public class ListOfNodesActivity extends AppCompatActivity implements NodeAdapte
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

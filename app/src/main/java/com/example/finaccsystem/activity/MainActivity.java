@@ -24,5 +24,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    public void startListOfTransactionsActivity(View view) {
+        Intent intent = new Intent(this, ListOfTransactionsActivity.class);
+        startActivity(intent);
+    }
 }
